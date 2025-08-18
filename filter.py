@@ -26,7 +26,12 @@ window.title("Milk filter!")
 widthWindow= window.winfo_screenwidth()               
 heightWindow= window.winfo_screenheight()               
 window.geometry("%dx%d" % (widthWindow, heightWindow))
-window.state('zoomed')
+
+# state zoomed doesnt work on x11 system
+if os.name == 'nt':
+    window.state('zoomed')
+else: 
+    window.state('normal')
 
 iconPath = resource_path("icon.ico")
 
